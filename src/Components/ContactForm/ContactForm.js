@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import useLocalStorage from '../../hooks/useLocalStorage';
 import PropTypes from 'prop-types';
 import { useDispatch  } from 'react-redux';
-import contactsActions from '../../redux/phonebook/contacts-actions';
+import { addContact } from '../../redux/phonebook/contacts-operations';
 import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -26,7 +26,7 @@ export default function ContactForm() {
 
     const handleSubmit = event => {
         event.preventDefault();
-        dispatch(contactsActions.addContact(name, number));
+        dispatch(addContact(name, number));
         setName('');
         setNumber('');
     }

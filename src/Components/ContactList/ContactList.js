@@ -2,19 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFiltredContacts } from '../../redux/phonebook/contacts-selectors';
-import contactsActions from '../../redux/phonebook/contacts-actions';
+import { fetchContact, deleteContact } from '../../redux/phonebook/contacts-operations';
 import styles from './ContactList.module.css';
+import { useEffect } from 'react';
 
 export default function ContactList() { 
-    const contacts = useSelector(getFiltredContacts);
     const dispatch = useDispatch();
+    useEffect(() => {
+        fetchContact();
+    }, []);
+    const contacts = useSelector(getFiltredContacts()); 
+    
 
     return(
     <ul className={styles.list}>
         {contacts.map( ({ id, name, number }) => (
             <li key={id} className={styles.item}>
                 <p className={styles.name}>{name}: <span>{number}</span></p>
-                <button type="button" className={styles.btn} onClick={() => dispatch(contactsActions.deleteContact(id))}>Delete</button>
+                <button type="button" className={styles.btn} onClick={() => dispatch(deleteContact(id))}>Delete</button>
             </li>
         ) )
         }

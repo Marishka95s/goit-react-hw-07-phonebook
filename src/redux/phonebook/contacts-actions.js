@@ -1,42 +1,35 @@
-import shortid from 'shortid';
 import { createAction } from '@reduxjs/toolkit';
-// import ContactTypes from './contacts-types';
 
-// const addContact = (name, number) => ({
-//     type: ContactTypes.ADD,
-//     payload: { 
-//         id: shortid.generate(),
-//         name,
-//         number,
-//     }
-// });
+const fetchContactRequest = createAction('contacts/fetchContactRequest');
+const fetchContactSuccess = createAction('contacts/fetchContactSuccess');
+const fetchContactError = createAction('contacts/fetchContactError');
 
-// createAction(type, prepareAction)
-const addContact = createAction('contacts/add', (name, number) => {    return { 
-    payload: {
-        id: shortid.generate(),
-        name,
-        number,
-    }
-  }
-});
+const addContactRequest = createAction('contacts/addContactRequest');
+const addContactSuccess = createAction('contacts/addContactSuccess');
+const addContactError = createAction('contacts/addContactError');
 
-// const deleteContact = contactId => ({
-//     type: ContactTypes.DELETE,
-//     payload: contactId,
-// });
-const deleteContact = createAction('contacts/delete');
+const deleteContactRequest = createAction('contacts/deleteContactRequest');
+const deleteContactSuccess = createAction('contacts/deleteContactSuccess');
+const deleteContactError = createAction('contacts/deleteContactError');
 
-// const changeFilter = value => ({
-//     type: ContactTypes.CHANGE_FILTER,
-//     payload: value,
-// });
+const updateContactRequest = createAction('contacts/updateContactRequest');
+const updateContactSuccess = createAction('contacts/updateContactSuccess');
+const updateContactError = createAction('contacts/updateContactError');
+
 const changeFilter = createAction('contscts/changeFilter');
 
 const contactsActions = {
-    addContact, 
-    deleteContact, 
-    changeFilter
+  fetchContactRequest,
+  fetchContactSuccess,
+  fetchContactError,
+  addContactRequest, addContactSuccess,
+  addContactError,
+  deleteContactRequest, deleteContactSuccess,
+  deleteContactError,
+  updateContactRequest,
+  updateContactSuccess,
+  updateContactError,
+  changeFilter
   };
 
 export default contactsActions;
