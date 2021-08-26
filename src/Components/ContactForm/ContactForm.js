@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 // import useLocalStorage from '../../hooks/useLocalStorage';
 import PropTypes from 'prop-types';
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
+import { getFiltredContacts } from '../../redux/phonebook/contacts-selectors';
 import { addContact } from '../../redux/phonebook/contacts-operations';
 import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
     const dispatch = useDispatch();
+    const contacts = useSelector(getFiltredContacts);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');  
 
@@ -26,7 +28,7 @@ export default function ContactForm() {
 
     const handleSubmit = event => {
         event.preventDefault();
-        dispatch(addContact(name, number));
+        dispatch(addContact(contacts, name, number));
         setName('');
         setNumber('');
     }

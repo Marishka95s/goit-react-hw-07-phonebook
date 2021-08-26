@@ -12,7 +12,7 @@ export default function ContactList() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchContact());
-    }, []);
+    }, [dispatch]);
     const contacts = useSelector(getFiltredContacts);     
 
     return(

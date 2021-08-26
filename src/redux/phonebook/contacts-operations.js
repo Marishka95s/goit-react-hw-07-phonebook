@@ -10,8 +10,8 @@ export const fetchContact = () => dispatch => {
     axios.get('/contacts').then(({ data }) => dispatch(fetchContactSuccess(data))).catch(error => dispatch(fetchContactError(error)));
 };
 
-export const addContact = (name, number) => dispatch => {
-    // const isInContacts = state.some(contact => contact.name === name);
+export const addContact = (contacts, name, number) => dispatch => {
+    // const isInContacts = contacts.some(contact => contact.name === name);
     //     if (isInContacts) { 
     //         let replaceAgreement = window.confirm(`${name} is already in contacts. Replace ${name} number?`);
 
@@ -23,7 +23,12 @@ export const addContact = (name, number) => dispatch => {
     //             .patch(`/contacts/${name}`, update)
     //             .then(({ data }) => dispatch(updateContactSuccess(data)))
     //             .catch(error => dispatch(updateContactError(error)));
-    //         } 
+    //         }
+    const isInContacts = contacts.some(contact => contact.name === name);
+        if (isInContacts) { 
+            alert(`${name} is already in contacts`);
+            return;
+        }    
     const contact = {
         name, 
         number
