@@ -1,6 +1,8 @@
 export const getContacts = state => state.contacts.items;
 export const getFilter = state => state.contacts.filter;
 export const getTotalContacts = state => state.contacts.items.length;
+export const getError = state => state.contacts.error;
+export const getLoadingStatus = state => state.contacts.loading;
 
 export const getFiltredContacts = state => {
     const contacts = getContacts(state);
