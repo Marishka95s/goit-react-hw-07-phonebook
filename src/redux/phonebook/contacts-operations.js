@@ -7,10 +7,7 @@ const { fetchContactRequest, fetchContactSuccess, fetchContactError, addContactR
 export const fetchContact = () => dispatch => {
     dispatch(fetchContactRequest());
 
-    axios
-    .get('/contacts')
-    .then(({ data }) => dispatch(fetchContactSuccess(data)))
-    .catch(error => dispatch(fetchContactError(error)));
+    axios.get('/contacts').then(({ data }) => dispatch(fetchContactSuccess(data))).catch(error => dispatch(fetchContactError(error)));
 };
 
 export const addContact = (name, number) => dispatch => {
@@ -34,30 +31,21 @@ export const addContact = (name, number) => dispatch => {
 
     dispatch(addContactRequest());
 
-    axios
-    .post('/contacts', contact)
-    .then(({ data }) => dispatch(addContactSuccess(data)))
-    .catch(error => dispatch(addContactError(error)));
+    axios.post('/contacts', contact).then(({ data }) => dispatch(addContactSuccess(data))).catch(error => dispatch(addContactError(error)));
 // }
 };
 
 export const deleteContact = contactId => dispatch => {
     dispatch(deleteContactRequest());
 
-    axios
-    .delete(`/contacts/${contactId}`)
-    .then(() => dispatch(deleteContactSuccess(contactId)))
-    .catch(error => dispatch(deleteContactError(error)));
+    axios.delete(`/contacts/${contactId}`).then(() => dispatch(deleteContactSuccess(contactId))).catch(error => dispatch(deleteContactError(error)));
 };
 
 export const updateContact = (contactId, number) => dispatch => {
     const update = { number };
     dispatch(updateContactRequest());
 
-    axios
-    .patch(`/contacts/${contactId}`, update)
-    .then(({ data }) => dispatch(updateContactSuccess(data)))
-    .catch(error => dispatch(updateContactError(error)));
+    axios.patch(`/contacts/${contactId}`, update).then(({ data }) => dispatch(updateContactSuccess(data))).catch(error => dispatch(updateContactError(error)));
 };
 
 // const operations = { fetchContact, addContact, deleteContact, updateContact };

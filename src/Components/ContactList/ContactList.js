@@ -7,13 +7,13 @@ import styles from './ContactList.module.css';
 import { useEffect } from 'react';
 
 export default function ContactList() { 
-    const error = useSelector(getError());
-    const loading = useSelector(getLoadingStatus());
+    const error = useSelector(getError);
+    const loading = useSelector(getLoadingStatus);
     const dispatch = useDispatch();
     useEffect(() => {
-        fetchContact();
+        dispatch(fetchContact());
     }, []);
-    const contacts = useSelector(getFiltredContacts());     
+    const contacts = useSelector(getFiltredContacts);     
 
     return(
     <>
